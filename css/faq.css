@@ -1,0 +1,72 @@
+*{
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box; /* menambahkan ini untuk memperhitungkan padding dan border dalam perhitungan ukuran elemen */
+	font-family: "Roboto", sans-serif; /* Koreksi penulisan font family */
+}
+
+ul{
+	list-style: none;
+	float: right;
+	margin-right: 20px;
+	margin-top: 10px;
+}
+
+li{
+	display: inline-block;
+	padding: 15px;
+	color: white;
+	font-size: 20px;
+	cursor: pointer;
+	border: 3px solid #fcc923; /* Warna border menggunakan kode warna langsung */
+	width: 100px;
+	text-align: center;
+	letter-spacing: 2px; /* Menyesuaikan spasi antar huruf */
+}
+
+li:hover{
+	background-color: #fcc923; /* Warna latar belakang saat hover */
+	font-weight: bold;
+}
+
+nav{
+	width: 100%; /* Lebarkan navigasi */
+	background-color: transparent;
+	padding: 10px;
+	position: fixed; /* Tetapkan posisi navigasi */
+	top: 0; /* Letakkan navigasi di atas */
+	z-index: 1000; /* Tetapkan z-index agar navigasi di atas konten lain */
+}
+
+.content{
+	margin-top: 105px;
+	padding: 20px; /* Perbesar padding */
+}
+
+.title{
+	color: white;
+	text-align: center;
+	font-size: 36px; /* Perkecil ukuran judul */
+	letter-spacing: 2px;
+	text-shadow: 1px 1px 2px black;
+	margin-bottom: 20px; /* Tambahkan margin bawah */
+}
+
+.faq{
+	width: 100%; /* Ubah lebar elemen FAQ */
+	margin: 0 auto 20px; /* Tambahkan margin bawah dan pusatkan horizontal */
+	background: #f0f0f0; /* Ganti warna latar belakang */
+	padding: 20px;
+	box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3); /* Tambahkan efek bayangan */
+	cursor: pointer;
+	transition: background-color 0.3s, transform 0.3s; /* Tambahkan transisi untuk hover */
+}
+
+.faq:hover{
+	background-color: #e0e0e0; /* Ubah warna latar belakang saat hover */
+	transform: translateY(-3px); /* Angkat sedikit elemen saat hover */
+}
+
+#panel1, #panel2, #panel3{
+	display: none;
+}

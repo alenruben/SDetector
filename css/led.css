@@ -1,0 +1,30 @@
+.led-indicator {
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        display: inline-block;
+        margin-right: 10px;
+    }
+
+    .led-red-on {
+        background-color: red;
+    }
+
+    .led-red-off {
+        background-color: transparent;
+        border: 1px solid red;
+    }
+
+    .led-green-on {
+        background-color: green;
+    }
+
+    .led-green-off {
+        background-color: transparent;
+        border: 1px solid green;
+    }
+
+    .led-status {
+        display: flex;
+        align-items: center;
+    }
