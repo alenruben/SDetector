@@ -95,7 +95,8 @@
 
             if (username === correctUsername && password === correctPassword) {
                 alert("Login berhasil!");
-                window.location.href = "dashboard.html"; // Replace with the actual dashboard page
+                // Redirect to dashboard.html
+                window.location.replace("dashboard.html"); // Gunakan replace untuk memastikan halaman login tidak bisa kembali
             } else {
                 alert("Username atau password salah!");
             }
