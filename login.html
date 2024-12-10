@@ -116,6 +116,25 @@
             });
         }
     </script>
+    <style>
+    body {
+      background: url('img/body.png');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      font-family: "roboto", sans-serif;
+    }
+    .img {
+      background: url('img/login.png');
+      background-size: cover;
+      background-position: center;
+      height: 100%;
+      top: 0;
+      position: absolute;
+      width: 100%;
+      z-index: 2;
+  }
+  </style>
 </head>
 <body>
     <div class="container">
@@ -181,6 +200,7 @@
                                 </form>
                             </div>
                         </div>
+                        <div class="img"></div>
                     </div>
 
                     <div class="col-sm-6 p-0">
@@ -220,7 +240,7 @@
                                         </div>
                                     </div>
                                     <div class="forgot-password">
-                                        <a href="lupapw.php">Forgot Password?</a>
+                                        <a href="lupapw.html">Forgot Password?</a>
                                     </div>
                                     <button type="submit" name="login" class="btn btn-primary" style="margin-top: 10px;">Login</button>
                                 </form>
@@ -231,5 +251,6 @@
             </div>
         </div>
     </div>
+    <script src="js/slidelogin.js"></script>
 </body>
 </html>
