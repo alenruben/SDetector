@@ -51,6 +51,26 @@
 
             return true;
         }
+
+        // Validate login
+        document.getElementById("loginForm").addEventListener("submit", function (event) {
+            event.preventDefault();
+
+            const username = document.getElementById("username").value;
+            const password = document.getElementById("password").value;
+
+            // Set correct username and password
+            const correctUsername = "Admin";
+            const correctPassword = "Admin1234";
+
+            if (username === correctUsername && password === correctPassword) {
+                alert("Login berhasil!");
+                // Redirect to dashboard.html
+                window.location.replace("dashboard.html"); // Gunakan replace untuk memastikan halaman login tidak bisa kembali
+            } else {
+                alert("Username atau password salah!");
+            }
+        });
     </script>
 
     <style>
