@@ -15,19 +15,18 @@
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
     <script>
-
-        // Check cookies for auto-login
+        // Cek cookies untuk auto-login
         window.onload = function() {
             var userId = localStorage.getItem('userId');
             var userKey = localStorage.getItem('userKey');
 
             if (userId && userKey) {
-                // Simulate a successful login (you should validate this on your backend)
-                window.location.href = 'dashboard'; // Redirect to dashboard
+                // Simulasikan login berhasil (harus divalidasi di backend)
+                window.location.href = 'dashboard'; // Redirect ke dashboard
             }
         }
 
-        // Toggle password visibility
+        // Toggle visibilitas password
         function togglePassword(fieldId, eyeId) {
             var passwordField = document.getElementById(fieldId);
             var eyeIcon = document.getElementById(eyeId);
@@ -43,25 +42,25 @@
             }
         }
 
-        // Form validation for registration
+        // Validasi form untuk registrasi
         function validateForm() {
             var password = document.querySelector('input[name="password-registrasi"]').value;
             var passwordConfirm = document.querySelector('input[name="password-confirm"]').value;
 
             if (password.length < 8) {
-                alert("Password must be at least 8 characters long.");
+                alert("Password harus minimal 8 karakter.");
                 return false;
             }
 
             if (password !== passwordConfirm) {
-                alert("Passwords do not match.");
+                alert("Password tidak cocok.");
                 return false;
             }
 
             return true;
         }
 
-        // Handle Sign Up
+        // Menangani proses Sign Up
         function handleSignUp(event) {
             event.preventDefault();
             var email = document.querySelector('input[name="email-registrasi"]').value;
@@ -70,9 +69,9 @@
 
             if (!validateForm()) return;
 
-            // Send data to the backend for registration
+            // Kirim data ke backend untuk registrasi
             $.ajax({
-                url: 'path_to_backend_register.php', // Change this to your PHP backend registration path
+                url: 'backend_register.php', // Ganti dengan path PHP backend untuk registrasi
                 method: 'POST',
                 data: {
                     email: email,
@@ -89,69 +88,60 @@
             });
         }
 
-        // Handle Login
-function handleLogin(event) {
-    event.preventDefault(); // Prevent default form submission behavior
+        // Menangani proses Login
+        function handleLogin(event) {
+            event.preventDefault();
+            var emailOrUsername = document.querySelector('input[name="user-email"]').value;
+            var password = document.querySelector('input[name="password-login"]').value;
 
-    var emailOrUsername = document.querySelector('input[name="user-email"]').value;
-    var password = document.querySelector('input[name="password-login"]').value;
-
-    // Check if the fields are not empty
-    if (!emailOrUsername || !password) {
-        swal('Error', 'Please fill in both fields.', 'error');
-        return;
-    }
-
-    // Send data to the backend for login
-    $.ajax({
-        url: 'path_to_backend_login.php', // Change this to your PHP backend login path
-        method: 'POST',
-        data: {
-            emailOrUsername: emailOrUsername,
-            password: password
-        },
-        success: function(response) {
-            if (response.success) {
-                // Store login info in localStorage for auto-login
-                localStorage.setItem('userId', response.userId);
-                localStorage.setItem('userKey', response.userKey);
-                window.location.href = 'dashboard'; // Redirect to dashboard
-            } else {
-                swal('Gagal', 'Login gagal, periksa kembali username/email dan password anda.', 'error');
-            }
-        },
-        error: function() {
-            swal('Error', 'Terjadi kesalahan pada server. Coba lagi nanti.', 'error');
+            // Kirim data ke backend untuk login
+            $.ajax({
+                url: 'backend_login.php', // Ganti dengan path PHP backend untuk login
+                method: 'POST',
+                data: {
+                    emailOrUsername: emailOrUsername,
+                    password: password
+                },
+                success: function(response) {
+                    if (response.success) {
+                        // Simpan info login ke localStorage untuk auto-login
+                        localStorage.setItem('userId', response.userId);
+                        localStorage.setItem('userKey', response.userKey);
+                        window.location.href = 'dashboard'; // Redirect ke dashboard
+                    } else {
+                        swal('Gagal', 'Login gagal, periksa kembali username/email dan password anda.', 'error');
+                    }
+                }
+            });
         }
-    });
-}
-
     </script>
+
     <style>
-    body {
-      background: url('img/body.png');
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
-      font-family: "roboto", sans-serif;
-    }
-    .img {
-      background: url('img/login.png');
-      background-size: cover;
-      background-position: center;
-      height: 100%;
-      top: 0;
-      position: absolute;
-      width: 100%;
-      z-index: 2;
-  }
-  </style>
+        body {
+            background: url('img/body.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            font-family: "roboto", sans-serif;
+        }
+        .img {
+            background: url('img/login.png');
+            background-size: cover;
+            background-position: center;
+            height: 100%;
+            top: 0;
+            position: absolute;
+            width: 100%;
+            z-index: 2;
+        }
+    </style>
 </head>
 <body>
     <div class="container">
         <div class="row justify-content-md-center mt-12">
             <div class="col-sm-8 border-box">
                 <div class="row">
+                    <!-- SIGN UP FORM -->
                     <div class="col-sm-6 p-0">
                         <div class="card">
                             <div class="card-header">
@@ -194,7 +184,6 @@ function handleLogin(event) {
                                             </span>
                                         </div>
                                     </div>
-
                                     <div class="input-group mb-3">
                                         <div class="input-group-prepend">
                                             <span class="input-group-text"><i class="fa fa-lock"></i></span>
@@ -206,14 +195,13 @@ function handleLogin(event) {
                                             </span>
                                         </div>
                                     </div>
-
                                     <button type="submit" name="sign-up" class="btn btn-primary">Sign up</button>
                                 </form>
                             </div>
                         </div>
-                        <div class="img"></div>
                     </div>
 
+                    <!-- LOGIN FORM -->
                     <div class="col-sm-6 p-0">
                         <div class="card">
                             <div class="card-header">
