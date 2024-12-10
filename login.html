@@ -17,61 +17,7 @@
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
 
-    <script>
-        // Toggle visibility of password fields
-        function togglePassword(fieldId, eyeId) {
-            var passwordField = document.getElementById(fieldId);
-            var eyeIcon = document.getElementById(eyeId);
-            
-            if (passwordField.type === "password") {
-                passwordField.type = "text";
-                eyeIcon.classList.remove("fa-eye");
-                eyeIcon.classList.add("fa-eye-slash");
-            } else {
-                passwordField.type = "password";
-                eyeIcon.classList.remove("fa-eye-slash");
-                eyeIcon.classList.add("fa-eye");
-            }
-        }
-
-        // Validate sign-up form
-        function validateForm() {
-            var password = document.querySelector('input[name="password-registrasi"]').value;
-            var passwordConfirm = document.querySelector('input[name="password-confirm"]').value;
-
-            if (password.length < 8) {
-                alert("Password must be at least 8 characters long.");
-                return false;
-            }
-
-            if (password !== passwordConfirm) {
-                alert("Passwords do not match.");
-                return false;
-            }
-
-            return true;
-        }
-
-        // Validate login
-        document.getElementById("loginForm").addEventListener("submit", function (event) {
-            event.preventDefault();
-
-            const username = document.getElementById("username").value;
-            const password = document.getElementById("password").value;
-
-            // Set correct username and password
-            const correctUsername = "Admin";
-            const correctPassword = "Admin1234";
-
-            if (username === correctUsername && password === correctPassword) {
-                alert("Login berhasil!");
-                // Redirect to dashboard.html
-                window.location.replace("dashboard.html"); // Gunakan replace untuk memastikan halaman login tidak bisa kembali
-            } else {
-                alert("Username atau password salah!");
-            }
-        });
-    </script>
+    
 
     <style>
     body {
@@ -197,5 +143,60 @@
         </div>
     </div>
     <script src="js/slidelogin.js"></script>
+    <script>
+        // Toggle visibility of password fields
+        function togglePassword(fieldId, eyeId) {
+            var passwordField = document.getElementById(fieldId);
+            var eyeIcon = document.getElementById(eyeId);
+            
+            if (passwordField.type === "password") {
+                passwordField.type = "text";
+                eyeIcon.classList.remove("fa-eye");
+                eyeIcon.classList.add("fa-eye-slash");
+            } else {
+                passwordField.type = "password";
+                eyeIcon.classList.remove("fa-eye-slash");
+                eyeIcon.classList.add("fa-eye");
+            }
+        }
+
+        // Validate sign-up form
+        function validateForm() {
+            var password = document.querySelector('input[name="password-registrasi"]').value;
+            var passwordConfirm = document.querySelector('input[name="password-confirm"]').value;
+
+            if (password.length < 8) {
+                alert("Password must be at least 8 characters long.");
+                return false;
+            }
+
+            if (password !== passwordConfirm) {
+                alert("Passwords do not match.");
+                return false;
+            }
+
+            return true;
+        }
+
+        // Validate login
+        document.getElementById("loginForm").addEventListener("submit", function (event) {
+            event.preventDefault();
+
+            const username = document.getElementById("username").value;
+            const password = document.getElementById("password").value;
+
+            // Set correct username and password
+            const correctUsername = "Admin";
+            const correctPassword = "Admin1234";
+
+            if (username === correctUsername && password === correctPassword) {
+                alert("Login berhasil!");
+                // Redirect to dashboard.html
+                window.location.replace("dashboard.html"); // Gunakan replace untuk memastikan halaman login tidak bisa kembali
+            } else {
+                alert("Username atau password salah!");
+            }
+        });
+    </script>
 </body>
 </html>
