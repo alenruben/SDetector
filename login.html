@@ -90,31 +90,42 @@
         }
 
         // Handle Login
-        function handleLogin(event) {
-            event.preventDefault();
-            var emailOrUsername = document.querySelector('input[name="user-email"]').value;
-            var password = document.querySelector('input[name="password-login"]').value;
+function handleLogin(event) {
+    event.preventDefault(); // Prevent default form submission behavior
 
-            // Send data to the backend for login
-            $.ajax({
-                url: 'path_to_backend_login.php', // Change this to your PHP backend login path
-                method: 'POST',
-                data: {
-                    emailOrUsername: emailOrUsername,
-                    password: password
-                },
-                success: function(response) {
-                    if (response.success) {
-                        // Store login info in localStorage for auto-login
-                        localStorage.setItem('userId', response.userId);
-                        localStorage.setItem('userKey', response.userKey);
-                        window.location.href = 'dashboard'; // Redirect to dashboard
-                    } else {
-                        swal('Gagal', 'Login gagal, periksa kembali username/email dan password anda.', 'error');
-                    }
-                }
-            });
+    var emailOrUsername = document.querySelector('input[name="user-email"]').value;
+    var password = document.querySelector('input[name="password-login"]').value;
+
+    // Check if the fields are not empty
+    if (!emailOrUsername || !password) {
+        swal('Error', 'Please fill in both fields.', 'error');
+        return;
+    }
+
+    // Send data to the backend for login
+    $.ajax({
+        url: 'path_to_backend_login.php', // Change this to your PHP backend login path
+        method: 'POST',
+        data: {
+            emailOrUsername: emailOrUsername,
+            password: password
+        },
+        success: function(response) {
+            if (response.success) {
+                // Store login info in localStorage for auto-login
+                localStorage.setItem('userId', response.userId);
+                localStorage.setItem('userKey', response.userKey);
+                window.location.href = 'dashboard'; // Redirect to dashboard
+            } else {
+                swal('Gagal', 'Login gagal, periksa kembali username/email dan password anda.', 'error');
+            }
+        },
+        error: function() {
+            swal('Error', 'Terjadi kesalahan pada server. Coba lagi nanti.', 'error');
         }
+    });
+}
+
     </script>
     <style>
     body {
